@@ -2,7 +2,16 @@
   "name": "d3-sandbox",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
   "dependencies": {
     "d3": "^5.15.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@storybook/html": "^5.2.8",
+    "babel-loader": "^8.0.6"
   }
 }
