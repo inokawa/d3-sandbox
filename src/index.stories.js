@@ -1,8 +1,10 @@
+import hello from './hello.html';
+
 export default {
   title: 'Demo',
 };
 
-export const heading = () => '<h1>Hello World</h1>';
+export const heading = () => hello;
 
 export const button = () => {
   const btn = document.createElement('button');
