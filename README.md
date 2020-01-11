@@ -5,6 +5,6 @@ D3.js 検証用
 
 ## Start
 ```
-yarn install
-yarn storybook
+npm install
+npm run storybook
 ```
