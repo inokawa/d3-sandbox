@@ -1,7 +1,7 @@
 
 import { withCssResources } from '@storybook/addon-cssresources';
 import init from './lineChart.js';
-import getRangedData from '../../utils/getRangedData.js';
+import { getRangedData } from '../../utils/randamDataCreator';
 
 export default {
   title: 'lineChart',

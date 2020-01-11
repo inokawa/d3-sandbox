@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-export default function getRangedData(max) {
+export const getRangedData = (max) => {
   const list = [];
   const arr = d3.range(0, Math.ceil(Math.random() * 30));
   for (let i = 0; i < arr.length; i++) {
@@ -10,4 +10,4 @@ export default function getRangedData(max) {
     });
   }
   return list;
-}
+};
