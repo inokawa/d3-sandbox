@@ -3,11 +3,11 @@ import setAxis from '../../utils/setAxis';
 
 /**
  * 棒グラフ
- * @param {*} data
+ * @param {*} elem
  * @param {*} xParam
  * @param {*} yParam
  */
-function init(elem, data, xParam, yParam) {
+function init(elem, xParam, yParam) {
   // svg領域設定
   const svgWidth = 600;
   const svgHeight = 400;
@@ -28,7 +28,7 @@ function init(elem, data, xParam, yParam) {
   const xScale = d3.scaleBand().rangeRound([0, width]).padding(0.1);
   const yScale = d3.scaleLinear().range([height, 0]);
 
-  update(data);
+  return update;
 
   function update(data) {
     // ドメイン設定

@@ -21,7 +21,7 @@ export default {
 
 export const normal = () => {
   const div = document.createElement('div');
-  init(div, getRangedData(1000),
+  const update = init(div,
     {
       key: 'name',
       name: '名前'
@@ -30,5 +30,10 @@ export const normal = () => {
       key: 'value',
       name: '値'
     });
+
+  update(getRangedData(1000));
+  setInterval(() => {
+    update(getRangedData(1000));
+  }, 1000)
   return div;
 };
