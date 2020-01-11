@@ -11,3 +11,17 @@ export const getRangedData = (max) => {
   }
   return list;
 };
+
+export const getRandom2dData = (xMax, yMax) => {
+  const list = [];
+  const length = Math.ceil(Math.random() * 50);
+  for (let i = 0; i < length; i++) {
+    list.push({
+      x: Math.floor(Math.random() * Math.random() * xMax),
+      y: Math.floor(Math.random() * Math.random() * yMax),
+      name: i
+    });
+  }
+  d3.shuffle(list);
+  return list;
+};

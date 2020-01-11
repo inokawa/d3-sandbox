@@ -4,11 +4,11 @@ import setAxis from '../../utils/setAxis';
 /**
  * 散布図
  * @param {*} elem
- * @param {*} data
  * @param {*} xParam
  * @param {*} yParam
+ * @param {*} name
  */
-function init(elem, data, xParam, yParam, name) {
+function init(elem, xParam, yParam, name) {
   // svg領域設定
   const svgWidth = 600;
   const svgHeight = 400;
@@ -29,7 +29,7 @@ function init(elem, data, xParam, yParam, name) {
   const xScale = d3.scaleLinear().range([0, width]);
   const yScale = d3.scaleLinear().range([height, 0]);
 
-  update(data);
+  return update;
 
   function update(data) {
     // ドメイン設定
