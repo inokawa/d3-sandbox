@@ -4,11 +4,10 @@ import setAxis from '../../utils/setAxis';
 /**
  * 線グラフ
  * @param {*} elem
- * @param {*} data
  * @param {*} xParam
  * @param {*} yParam
  */
-function init(elem, data, xParam, yParam) {
+function init(elem, xParam, yParam) {
   // svg領域設定
   const svgWidth = 600;
   const svgHeight = 400;
@@ -29,7 +28,7 @@ function init(elem, data, xParam, yParam) {
   const xScale = d3.scaleLinear().range([0, width]);
   const yScale = d3.scaleLinear().range([height, 0]);
 
-  update(data);
+  return update;
 
   function update(data) {
     // ドメイン設定
