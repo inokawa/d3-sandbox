@@ -1,7 +1,7 @@
 
 import { withCssResources } from '@storybook/addon-cssresources';
 import init from './scatterPlot.js';
-import { getRangedData } from '../../utils/randamDataCreator';
+import { getRandom2dData } from '../../utils/randamDataCreator';
 
 export default {
   title: 'scatterPlot',
@@ -22,14 +22,19 @@ export default {
 
 export const normal = () => {
   const div = document.createElement('div');
-  init(div, getRangedData(1000),
+  const update = init(div,
     {
-      key: 'name',
+      key: 'x',
       name: '名前'
     },
     {
-      key: 'value',
+      key: 'y',
       name: '値'
-    });
+    }, 'name');
+
+  update(getRandom2dData(100, 1000));
+  setInterval(() => {
+    update(getRandom2dData(100, 1000));
+  }, 1000)
   return div;
 };
