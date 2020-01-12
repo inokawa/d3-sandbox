@@ -20,13 +20,16 @@ function init(elem) {
   return update;
 
   function update(data) {
+    const t = d3.transition()
+      .duration(750);
+
     // join
     const text = graph.selectAll('text')
       .data(data, d => d);
     // update
     text
       .classed('update', true)
-      .transition()
+      .transition(t)
       .attr('x', (d, i) => i * 20)
       .attr('y', 0);
     // enter
@@ -37,13 +40,13 @@ function init(elem) {
       .attr('x', (d, i) => i * 20)
       .attr('y', -20)
       .attr('fill-opacity', 0)
-      .transition()
+      .transition(t)
       .attr('y', 0)
       .attr('fill-opacity', 1);
     // exit
     text.exit()
       .classed('exit', true)
-      .transition()
+      .transition(t)
       .attr('y', 20)
       .attr('fill-opacity', 0)
       .remove();
