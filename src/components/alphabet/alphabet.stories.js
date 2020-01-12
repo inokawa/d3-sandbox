@@ -42,7 +42,7 @@ export const normal = () => {
   const div = document.createElement('div');
   const update = init(div);
 
-  update(getLetters());
+  update(ALPHABETS);
   setInterval(() => {
     update(getLetters());
   }, 1000)
