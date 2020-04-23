@@ -1,6 +1,6 @@
 import { withCssResources } from '@storybook/addon-cssresources';
 import * as d3 from 'd3';
-import init from './alphabet';
+import init from './';
 
 export default {
   title: 'alphabet',
