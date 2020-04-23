@@ -28,7 +28,7 @@ export const normal = () => {
   const div = document.createElement('div');
 
   // https://geojson-maps.ash.ms/
-  const json = require("./custom.geo.json");
+  const json = require("../../resources/custom.geo.json");
   init(div, json.features);
   return div;
 };
