@@ -1,5 +1,7 @@
 # d3-sandbox
 
+![deploy](https://github.com/n-inokawa/d3-sandbox/workflows/deploy/badge.svg?branch=master)
+
 D3.js 検証用
 
 ## Start
