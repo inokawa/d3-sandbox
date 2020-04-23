@@ -24,6 +24,8 @@ function mapInit(elem, data) {
   //   .extent([[0, 0], [width, height]])
   //   .on('zoom', zoomed);
 
+  drawGraticule(mapGroup, path);
+
   let active;
 
   mapGroup
@@ -77,7 +79,7 @@ function globeInit(elem, data) {
   const projection = d3.geoOrthographic();
   const path = d3.geoPath().projection(projection);
 
-  drawGraticule();
+  drawGraticule(svg, path);
 
   svg
     .selectAll(".area")
@@ -86,23 +88,10 @@ function globeInit(elem, data) {
     .append("path")
     .attr("class", "area")
     .attr("d", path)
-    .style("opacity", ".6")
     .call(onMouseEnter, svg)
     .call(onMouseLeave);
 
   enableRotation();
-
-  function drawGraticule() {
-    const graticule = d3.geoGraticule().step([10, 10]);
-
-    svg
-      .append("path")
-      .datum(graticule)
-      .attr("class", "graticule")
-      .attr("d", path)
-      .style("fill", "#fff")
-      .style("stroke", "#ccc");
-  }
 
   function enableRotation() {
     d3.timer(function (elapsed) {
@@ -114,6 +103,18 @@ function globeInit(elem, data) {
       svg.selectAll("path").attr("d", path);
     });
   }
+}
+
+function drawGraticule(area, path) {
+  const graticule = d3.geoGraticule().step([10, 10]);
+
+  area
+    .append("path")
+    .datum(graticule)
+    .attr("class", "graticule")
+    .attr("d", path)
+    .style("fill", "#fff")
+    .style("stroke", "#ccc");
 }
 
 function onMouseEnter(selection, area) {

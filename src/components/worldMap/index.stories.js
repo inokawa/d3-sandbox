@@ -12,6 +12,7 @@ export default {
       .area {
         stroke: gray;
         fill: #e5e5e5;
+        opacity: 0.6;
       }
     
       .selected {
