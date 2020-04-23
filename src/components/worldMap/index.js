@@ -33,20 +33,8 @@ function mapInit(elem, data) {
     .append("path")
     .attr("d", path)
     .attr("class", "area")
-    .on("mouseenter", function (d) {
-      d3.select(this).classed("selected", true);
-      mapGroup
-        .append("text")
-        .classed("tooltip", true)
-        .style("text-anchor", "middle")
-        .attr("x", 100)
-        .attr("y", 300)
-        .text(d.properties.name);
-    })
-    .on("mouseleave", function (d) {
-      d3.select(this).classed("selected", false);
-      d3.selectAll(".tooltip").remove();
-    })
+    .call(onMouseEnter, mapGroup)
+    .call(onMouseLeave)
     .on("click", function (d) {
       if (active === d) return reset();
       mapGroup.selectAll(".active").classed("active", false);
@@ -110,20 +98,8 @@ function globeInit(elem, data) {
     .attr("class", "area")
     .attr("d", path)
     .style("opacity", ".6")
-    .on("mouseenter", function (d) {
-      d3.select(this).classed("selected", true);
-      svg
-        .append("text")
-        .classed("tooltip", true)
-        .style("text-anchor", "middle")
-        .attr("x", 100)
-        .attr("y", 300)
-        .text(d.properties.name);
-    })
-    .on("mouseleave", function (d) {
-      d3.select(this).classed("selected", false);
-      d3.selectAll(".tooltip").remove();
-    });
+    .call(onMouseEnter, svg)
+    .call(onMouseLeave);
 
   enableRotation();
 
@@ -149,6 +125,26 @@ function globeInit(elem, data) {
       svg.selectAll("path").attr("d", path);
     });
   }
+}
+
+function onMouseEnter(selection, area) {
+  selection.on("mouseenter", function (d) {
+    d3.select(this).classed("selected", true);
+    area
+      .append("text")
+      .classed("tooltip", true)
+      .style("text-anchor", "middle")
+      .attr("x", 100)
+      .attr("y", 300)
+      .text(d.properties.name);
+  });
+}
+
+function onMouseLeave(selection) {
+  selection.on("mouseleave", function (d) {
+    d3.select(this).classed("selected", false);
+    d3.selectAll(".tooltip").remove();
+  });
 }
 
 export { mapInit, globeInit };
