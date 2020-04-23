@@ -47,21 +47,10 @@ function mapInit(elem, data) {
         .duration(700)
         .attr(
           "transform",
-          "translate(" +
-            projection.translate() +
-            ")" +
-            "scale(" +
+          `translate(${projection.translate()})scale(${
             0.95 /
-              Math.max(
-                (b[1][0] - b[0][0]) / width,
-                (b[1][1] - b[0][1]) / height
-              ) +
-            ")" +
-            "translate(" +
-            -(b[1][0] + b[0][0]) / 2 +
-            "," +
-            -(b[1][1] + b[0][1]) / 2 +
-            ")"
+            Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height)
+          })translate(${-(b[1][0] + b[0][0]) / 2},${-(b[1][1] + b[0][1]) / 2})`
         );
     });
 
