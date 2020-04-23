@@ -15,7 +15,7 @@ export default {
       }
     
       .selected {
-        fill: pink;
+        fill: darkcyan;
       }
       </style>`,
       picked: true,
