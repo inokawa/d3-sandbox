@@ -10,12 +10,12 @@ export default {
       id: `worldMap`,
       code: `<style>
       .area {
-        stroke: #000;
-        fill: #ccc;
+        stroke: gray;
+        fill: #e5e5e5;
       }
     
       .selected {
-        fill: darkcyan;
+        fill: cadetblue;
       }
       </style>`,
       picked: true,
