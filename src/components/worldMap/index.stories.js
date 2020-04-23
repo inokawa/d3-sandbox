@@ -1,6 +1,6 @@
 
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './worldMap';
+import init from './';
 
 export default {
   title: 'worldMap',
