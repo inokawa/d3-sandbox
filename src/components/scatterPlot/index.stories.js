@@ -1,6 +1,6 @@
 
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './scatterPlot.js';
+import init from './';
 import { getRandom2dData } from '../../utils/randamDataCreator';
 
 export default {
