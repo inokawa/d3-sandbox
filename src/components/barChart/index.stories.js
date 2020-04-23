@@ -1,5 +1,5 @@
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './barChart.js';
+import init from './';
 import { getRangedData } from '../../utils/randamDataCreator';
 
 export default {
