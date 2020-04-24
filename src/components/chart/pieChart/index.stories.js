@@ -1,10 +1,10 @@
 
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './';
-import { getRangedData } from '../../utils/randamDataCreator';
+import init from '.';
+import { getRangedData } from '../randamDataCreator';
 
 export default {
-  title: 'pieChart',
+  title: 'chart/pieChart',
   decorators: [withCssResources],
   parameters: {
     cssresources: [{

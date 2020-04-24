@@ -1,13 +1,14 @@
 import * as d3 from 'd3';
-import setAxis from '../../utils/setAxis';
+import setAxis from '../setAxis';
 
 /**
- * 線グラフ
+ * 散布図
  * @param {*} elem
  * @param {*} xParam
  * @param {*} yParam
+ * @param {*} name
  */
-function init(elem, xParam, yParam) {
+function init(elem, xParam, yParam, name) {
   // svg領域設定
   const svgWidth = 600;
   const svgHeight = 400;
@@ -38,24 +39,20 @@ function init(elem, xParam, yParam) {
     // 軸の作成
     setAxis(graph, xScale, yScale, xParam.name, yParam.name, width, height, margin);
 
-    // データマッピング用関数
-    const line = d3.line()
-      .x(d => xScale(d[xParam.key]))
-      .y(d => yScale(d[yParam.key]));
+    // 散布図の作成
+    const svgData = graph.selectAll('circle')
+      .data(data, d => d[name]);
 
-    // 線の作成
-    // join
-    const path = graph.selectAll('.line')
-      .data([data]);
-    // enter+update
-    path.enter()
-      .append('path')
-      .attr('class', 'line')
-      .merge(path)
+    svgData.enter()
+      .append('circle')
+      .merge(svgData)
       .transition()
-      .attr('d', line);
-    // exit
-    path.exit()
+      .attr('r', 3)
+      .attr('cx', d => xScale(d[xParam.key]))
+      .attr('cy', d => yScale(d[yParam.key]))
+      .attr('class', 'plot');
+
+    svgData.exit()
       .remove();
   }
 }

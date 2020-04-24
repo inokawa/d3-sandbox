@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import setAxis from '../../utils/setAxis';
+import setAxis from '../setAxis';
 
 /**
  * 棒グラフ

@@ -1,14 +1,13 @@
-
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './';
-import { getRandom2dData } from '../../utils/randamDataCreator';
+import init from '.';
+import { getRangedData } from '../randamDataCreator';
 
 export default {
-  title: 'scatterPlot',
+  title: 'chart/barChart',
   decorators: [withCssResources],
   parameters: {
     cssresources: [{
-      id: `scatterPlot`,
+      id: `barChart`,
       code: `<style>
       .plot {
         fill: steelblue;
@@ -24,17 +23,17 @@ export const normal = () => {
   const div = document.createElement('div');
   const update = init(div,
     {
-      key: 'x',
+      key: 'name',
       name: '名前'
     },
     {
-      key: 'y',
+      key: 'value',
       name: '値'
-    }, 'name');
+    });
 
-  update(getRandom2dData(100, 1000));
+  update(getRangedData(1000));
   setInterval(() => {
-    update(getRandom2dData(100, 1000));
+    update(getRangedData(1000));
   }, 1000)
   return div;
 };

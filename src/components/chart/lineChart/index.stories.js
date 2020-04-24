@@ -1,16 +1,19 @@
+
 import { withCssResources } from '@storybook/addon-cssresources';
-import init from './';
-import { getRangedData } from '../../utils/randamDataCreator';
+import init from '.';
+import { getRangedData } from '../randamDataCreator';
 
 export default {
-  title: 'barChart',
+  title: 'chart/lineChart',
   decorators: [withCssResources],
   parameters: {
     cssresources: [{
-      id: `barChart`,
+      id: `lineChart`,
       code: `<style>
-      .plot {
-        fill: steelblue;
+      .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 2px;
       }
       </style>`,
       picked: true,
