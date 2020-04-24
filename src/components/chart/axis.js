@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-export default function setAxis(svg, xScale, yScale, xName, yName, width, height, margin) {
+export function setAxis(svg, xScale, yScale, xName, yName, width, height, margin) {
   const xAxis = d3.axisBottom(xScale)
   // .tickSizeInner(-height) // グリッドを描画;
   const x = svg.selectAll('.x-axis')

@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import setAxis from '../setAxis';
+import {setAxis} from '../axis';
 
 /**
  * 散布図
