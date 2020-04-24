@@ -1,15 +1,23 @@
-import * as d3 from 'd3';
+import * as d3 from "d3";
 
-export function setAxis(svg, xScale, yScale, xName, yName, width, height, margin) {
-  const xAxis = d3.axisBottom(xScale)
+export function setAxis(
+  svg,
+  xScale,
+  yScale,
+  xName,
+  yName,
+  width,
+  height,
+  margin
+) {
+  const xAxis = d3.axisBottom(xScale);
   // .tickSizeInner(-height) // グリッドを描画;
-  const x = svg.selectAll('.x-axis')
-    .data(['dummy']);
+  const x = svg.selectAll(".x-axis").data(["dummy"]);
   x.enter()
-    .append('g')
+    .append("g")
     .merge(x)
-    .attr('class', 'x-axis')
-    .attr('transform', `translate(0,${height})`)
+    .attr("class", "x-axis")
+    .attr("transform", `translate(0,${height})`)
     .transition()
     .call(xAxis);
   //   // 凡例
@@ -22,14 +30,13 @@ export function setAxis(svg, xScale, yScale, xName, yName, width, height, margin
   //   .attr('font-weight', 'bold')
   //   .text(xName);
 
-  const yAxis = d3.axisLeft(yScale)
+  const yAxis = d3.axisLeft(yScale);
   // .tickSizeInner(-width) // グリッドを描画;
-  const y = svg.selectAll('.y-axis')
-    .data(['dummy']);
+  const y = svg.selectAll(".y-axis").data(["dummy"]);
   y.enter()
-    .append('g')
+    .append("g")
     .merge(y)
-    .attr('class', 'y-axis')
+    .attr("class", "y-axis")
     .transition()
     // .attr('transform', 'translate(' + margin.left  + ',0)')
     .call(yAxis);
@@ -43,4 +50,23 @@ export function setAxis(svg, xScale, yScale, xName, yName, width, height, margin
   // .attr('font-weight', 'bold')
   // .attr('font-size', '10pt')
   // .text(yName);
+}
+
+export function setRadialAxis(svg, data, xScale, xKey, radius, fullCircle) {
+  const xAxis = svg.selectAll(".x-axis").data(data, (d) => d[xKey]);
+  const xAxisEnter = xAxis.enter().append("g").attr("class", "x-axis");
+
+  xAxisEnter.append("line").attr("y2", -radius);
+
+  xAxisEnter
+    .merge(xAxis)
+    .transition()
+    .attr(
+      "transform",
+      (d) => `rotate(${(xScale(d[xKey]) * 360) / fullCircle})`
+    );
+
+  xAxis.exit().remove();
+
+  // TODO yAxis
 }

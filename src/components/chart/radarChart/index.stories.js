@@ -3,18 +3,22 @@ import init from ".";
 import { getRangedData } from "../randamDataCreator";
 
 export default {
-  title: "chart/raderChart",
+  title: "chart/radarChart",
   decorators: [withCssResources],
   parameters: {
     cssresources: [
       {
-        id: `raderChart`,
+        id: `radarChart`,
         code: `<style>
       .line {
         fill: steelblue;
         fill-opacity: 0.35;
         stroke: steelblue;
         stroke-width: 2px;
+      }
+      .x-axis {
+        stroke: black;
+        opacity: 0.5;    
       }
       </style>`,
         picked: true,
