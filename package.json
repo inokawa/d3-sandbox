@@ -15,6 +15,6 @@
     "@storybook/html": "^5.3.18",
     "babel-loader": "^8.0.6",
     "extract-loader": "^3.1.0",
-    "html-loader": "^0.5.5"
+    "html-loader": "^1.1.0"
   }
 }
