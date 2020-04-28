@@ -11,7 +11,7 @@ export default {
         code: `<style>
       path {
         stroke: white;
-        stroke-width: 0.03;
+        stroke-width: 0.1;
       }
       </style>`,
         picked: true,
@@ -32,7 +32,7 @@ export const heatmap = () => {
     }
     matrix[matrix.length - 1].push(v);
   });
-  heatmapInit(canvas, matrix, data.width * 8, data.height * 8);
+  heatmapInit(canvas, matrix, data.width * 6, data.height * 6);
   return canvas;
 };
 
@@ -48,6 +48,6 @@ export const contour = () => {
     }
     matrix[matrix.length - 1].push(v);
   });
-  contourInit(div, matrix, data.width * 8, data.height * 8);
+  contourInit(div, matrix, data.width * 6, data.height * 6);
   return div;
 };
