@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
-    "@storybook/addon-cssresources": "^5.2.8",
-    "@storybook/html": "^5.2.8",
+    "@storybook/addon-cssresources": "^5.3.18",
+    "@storybook/html": "^5.3.18",
     "babel-loader": "^8.0.6",
     "extract-loader": "^3.1.0",
     "html-loader": "^0.5.5"
