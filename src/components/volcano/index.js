@@ -6,7 +6,7 @@ const extentMatrix = (matrix) =>
     (d) => d
   );
 
-const init = (canvasRef, matrix, width, height) => {
+const heatmapInit = (canvasRef, matrix, width, height) => {
   const canvas = d3
     .select(canvasRef)
     .attr("width", width)
@@ -45,4 +45,4 @@ const init = (canvasRef, matrix, width, height) => {
   imageObj.src = canvas.node().toDataURL();
 };
 
-export default init;
+export { heatmapInit };

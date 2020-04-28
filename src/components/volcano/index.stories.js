@@ -1,7 +1,7 @@
-import init from "./";
+import { heatmapInit } from "./";
 
 export default {
-  title: "heatmap",
+  title: "volcano",
 };
 
 export const heatmap = () => {
@@ -16,6 +16,6 @@ export const heatmap = () => {
     }
     matrix[matrix.length - 1].push(v);
   });
-  init(canvas, matrix, data.width * 4, data.height * 4);
+  heatmapInit(canvas, matrix, data.width * 4, data.height * 4);
   return canvas;
 };
