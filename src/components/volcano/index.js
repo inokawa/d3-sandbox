@@ -1,10 +1,8 @@
 import * as d3 from "d3";
 
-const extentMatrix = (matrix) =>
-  d3.extent(
-    matrix.reduce((acc, r) => acc.concat(r), []),
-    (d) => d
-  );
+const flatten = (matrix) => matrix.reduce((acc, r) => acc.concat(r), []);
+
+const extentMatrix = (matrix) => d3.extent(flatten(matrix), (d) => d);
 
 const heatmapInit = (canvasRef, matrix, width, height) => {
   const canvas = d3
@@ -20,12 +18,11 @@ const heatmapInit = (canvasRef, matrix, width, height) => {
   const X = 0;
   const Y = 1;
   const canvasDim = [width, height];
+  const matrixDim = [matrix[0].length, matrix.length];
 
-  const heatmapDim = [matrix[0].length, matrix.length];
-
-  const image = context.createImageData(heatmapDim[X], heatmapDim[Y]);
-  for (let y = 0, p = -1; y < heatmapDim[Y]; ++y) {
-    for (let x = 0; x < heatmapDim[X]; ++x) {
+  const image = context.createImageData(matrixDim[X], matrixDim[Y]);
+  for (let y = 0, p = -1; y < matrixDim[Y]; ++y) {
+    for (let x = 0; x < matrixDim[X]; ++x) {
       const weight = matrix[y][x];
       const c = d3.rgb(color(weight));
       image.data[++p] = c.r;
@@ -39,7 +36,7 @@ const heatmapInit = (canvasRef, matrix, width, height) => {
 
   const imageObj = new Image();
   imageObj.onload = () => {
-    context.scale(canvasDim[X] / heatmapDim[X], canvasDim[Y] / heatmapDim[Y]);
+    context.scale(canvasDim[X] / matrixDim[X], canvasDim[Y] / matrixDim[Y]);
     context.drawImage(imageObj, 0, 0);
   };
   imageObj.src = canvas.node().toDataURL();
