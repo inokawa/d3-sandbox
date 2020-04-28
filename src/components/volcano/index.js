@@ -42,4 +42,45 @@ const heatmapInit = (canvasRef, matrix, width, height) => {
   imageObj.src = canvas.node().toDataURL();
 };
 
-export { heatmapInit };
+const contourInit = (elem, matrix, width, height) => {
+  const svg = d3
+    .select(elem)
+    .append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("width", width)
+    .attr("height", height);
+
+  const X = 0;
+  const Y = 1;
+  const matrixDim = [matrix[0].length, matrix.length];
+  const extent = extentMatrix(matrix);
+
+  const graph = svg
+    .append("g")
+    .attr(
+      "transform",
+      `scale(${width / matrixDim[X]},${height / matrixDim[Y]})`
+    );
+
+  const path = d3.geoPath();
+  const contours = d3
+    .contours()
+    .size([matrixDim[X], matrixDim[Y]])
+    .thresholds(d3.range(extent[0], extent[1], 10));
+
+  const color = d3
+    .scaleSequential(d3.interpolateSpectral)
+    .domain(extentMatrix(matrix));
+
+  graph
+    .selectAll("path")
+    .data(contours(flatten(matrix)))
+    .enter()
+    .append("path")
+    .attr("d", path)
+    .attr("fill", (d) => color(d.value))
+    .attr("stroke", "white")
+    .attr("stroke-width", 0.03);
+};
+
+export { heatmapInit, contourInit };
