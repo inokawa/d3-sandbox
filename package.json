@@ -13,8 +13,6 @@
     "@babel/core": "^7.9.0",
     "@storybook/addon-cssresources": "^5.3.18",
     "@storybook/html": "^5.3.18",
-    "babel-loader": "^8.1.0",
-    "extract-loader": "^5.0.1",
-    "html-loader": "^1.1.0"
+    "babel-loader": "^8.1.0"
   }
 }
