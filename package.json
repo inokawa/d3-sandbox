@@ -10,7 +10,7 @@
     "d3": "^5.16.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.9.0",
     "@storybook/addon-cssresources": "^5.3.18",
     "@storybook/html": "^5.3.18",
     "babel-loader": "^8.1.0",
