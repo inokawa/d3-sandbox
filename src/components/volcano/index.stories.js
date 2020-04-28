@@ -16,7 +16,7 @@ export const heatmap = () => {
     }
     matrix[matrix.length - 1].push(v);
   });
-  heatmapInit(canvas, matrix, data.width * 4, data.height * 4);
+  heatmapInit(canvas, matrix, data.width * 8, data.height * 8);
   return canvas;
 };
 
@@ -32,6 +32,6 @@ export const contour = () => {
     }
     matrix[matrix.length - 1].push(v);
   });
-  contourInit(div, matrix, data.width * 4, data.height * 4);
+  contourInit(div, matrix, data.width * 8, data.height * 8);
   return div;
 };
