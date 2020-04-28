@@ -78,9 +78,7 @@ const contourInit = (elem, matrix, width, height) => {
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("fill", (d) => color(d.value))
-    .attr("stroke", "white")
-    .attr("stroke-width", 0.03);
+    .attr("fill", (d) => color(d.value));
 };
 
 export { heatmapInit, contourInit };

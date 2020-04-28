@@ -1,7 +1,23 @@
+import { withCssResources } from "@storybook/addon-cssresources";
 import { heatmapInit, contourInit } from "./";
 
 export default {
   title: "volcano",
+  decorators: [withCssResources],
+  parameters: {
+    cssresources: [
+      {
+        id: `volcano`,
+        code: `<style>
+      path {
+        stroke: white;
+        stroke-width: 0.03;
+      }
+      </style>`,
+        picked: true,
+      },
+    ],
+  },
 };
 
 export const heatmap = () => {
