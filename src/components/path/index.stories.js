@@ -15,7 +15,20 @@ export default {
           stroke-width: 2.5px;
           stroke-linejoin: round;
           stroke-linecap: round;
-        }        
+
+          stroke-dasharray: 2000;
+          stroke-dashoffset: 0;
+          animation: dash 5s linear alternate infinite;
+        }
+          
+        @keyframes dash {
+          from {
+            stroke-dashoffset: 2000;
+          }
+          to {
+            stroke-dashoffset: 0;
+          }
+        }  
         </style>`,
         picked: true,
       },
