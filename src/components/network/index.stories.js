@@ -37,7 +37,7 @@ export default {
 
 export const tree = () => {
   const div = document.createElement("div");
-  init(div, require('../../resources/flare.json'));
+  init(div, require("../../resources/flare.json"), 'name');
 
   return div;
 };

@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 
-function init(elem, data) {
+function init(elem, data, key) {
   const svgWidth = 1200;
   const svgHeight = 1000;
   const svg = d3
@@ -18,19 +18,16 @@ function init(elem, data) {
 
   const tree = d3.tree().size([height, width]);
   const root = d3.hierarchy(data, (d) => d.children);
-  root.x0 = height / 2;
-  root.y0 = 0;
 
-  const diagonal = (s, d) =>
-    `M ${s.y} ${s.x}
-        C ${(s.y + d.y) / 2} ${s.x},
-          ${(s.y + d.y) / 2} ${d.x},
-          ${d.y} ${d.x}`;
+  const duration = 750;
+
+  const diagonal = d3
+    .linkHorizontal()
+    .x((d) => d.y)
+    .y((d) => d.x);
 
   update(root);
 
-  let id = 0;
-  const duration = 750;
   return update;
 
   function click(d) {
@@ -38,6 +35,7 @@ function init(elem, data) {
       d._children = d.children;
       d.children = null;
     } else {
+      if (!d._children) return;
       d.children = d._children;
       d._children = null;
     }
@@ -45,11 +43,12 @@ function init(elem, data) {
   }
 
   function update(source) {
-    const treeData = tree(root);
+    const tempSource = { x: source.x || height / 2, y: source.y || 0 };
 
+    const treeData = tree(root);
     // Compute the new tree layout.
     const nodes = treeData.descendants();
-    const links = treeData.descendants().slice(1);
+    const links = treeData.links();
 
     // Normalize for fixed-depth.
     nodes.forEach((d) => {
@@ -60,19 +59,18 @@ function init(elem, data) {
 
     const node = graph
       .selectAll("g.node")
-      .data(nodes, (d) => d.id || (d.id = ++id));
+      .data(nodes, (d) => d.data[key] + d.depth);
 
     // enter
     const nodeEnter = node
       .enter()
       .append("g")
       .attr("class", "node")
-      .attr("transform", (d) => `translate(${source.y0},${source.x0})`)
+      .attr("transform", (d) => `translate(${tempSource.y},${tempSource.x})`)
       .on("click", click);
 
     nodeEnter
       .append("circle")
-      .attr("class", "node")
       .attr("r", 1e-6)
       .style("fill", (d) => (d._children ? "lightsteelblue" : "#fff"));
 
@@ -92,7 +90,7 @@ function init(elem, data) {
       .attr("transform", (d) => `translate(${d.y},${d.x})`);
 
     nodeUpdate
-      .select("circle.node")
+      .select("circle")
       .style("fill", (d) => (d._children ? "lightsteelblue" : "#fff"));
 
     // exit
@@ -109,7 +107,16 @@ function init(elem, data) {
 
     // ****************** links section ***************************
 
-    const link = graph.selectAll("path.link").data(links, (d) => d.id);
+    const link = graph
+      .selectAll("path.link")
+      .data(
+        links,
+        (d) =>
+          d.target.data[key] +
+          d.target.depth +
+          d.source.data[key] +
+          d.source.depth
+      );
 
     // enter
     const linkEnter = link
@@ -117,7 +124,10 @@ function init(elem, data) {
       .insert("path", "g")
       .attr("class", "link")
       .attr("d", (d) =>
-        diagonal({ x: source.x0, y: source.y0 }, { x: source.x0, y: source.y0 })
+        diagonal({
+          source: tempSource,
+          target: tempSource,
+        })
       );
 
     // update
@@ -125,7 +135,7 @@ function init(elem, data) {
     linkUpdate
       .transition()
       .duration(duration)
-      .attr("d", (d) => diagonal(d, d.parent));
+      .attr("d", (d) => diagonal(d));
 
     // exit
     const linkExit = link
@@ -133,15 +143,12 @@ function init(elem, data) {
       .transition()
       .duration(duration)
       .attr("d", (d) =>
-        diagonal({ x: source.x, y: source.y }, { x: source.x, y: source.y })
+        diagonal({
+          source: source,
+          target: source,
+        })
       )
       .remove();
-
-    // Store the old positions for transition.
-    nodes.forEach((d) => {
-      d.x0 = d.x;
-      d.y0 = d.y;
-    });
   }
 }
 
