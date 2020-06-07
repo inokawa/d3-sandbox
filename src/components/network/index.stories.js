@@ -1,6 +1,6 @@
 import { withCssResources } from "@storybook/addon-cssresources";
 import * as d3 from "d3";
-import init from "./";
+import treeInit from "./tree";
 
 export default {
   title: "network",
@@ -37,7 +37,7 @@ export default {
 
 export const tree = () => {
   const div = document.createElement("div");
-  init(div, require("../../resources/flare.json"), 'name');
+  treeInit(div, require("../../resources/flare.json"), 'name');
 
   return div;
 };
