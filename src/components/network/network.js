@@ -45,7 +45,9 @@ function init(elem, data) {
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended)
-    );
+    )
+    .on("mouseenter", traceOn)
+    .on("mouseleave", traceOff);
   nodeEnter
     .append("text")
     .attr("dy", ".35em")
@@ -75,6 +77,23 @@ function init(elem, data) {
     if (!d3.event.active) simulation.alphaTarget(0);
     d3.event.subject.fx = null;
     d3.event.subject.fy = null;
+  }
+
+  function traceOn(d) {
+    traceBack(d);
+    traceForward(d);
+
+    function traceBack(d) {
+      pathEnter.filter((l) => l.target === d).classed("trace", true);
+    }
+
+    function traceForward(d) {
+      pathEnter.filter((l) => l.source === d).classed("trace", true);
+    }
+  }
+
+  function traceOff(d) {
+    pathEnter.classed("trace", false);
   }
 }
 
