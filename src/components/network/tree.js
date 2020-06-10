@@ -30,7 +30,7 @@ function init(elem, data, key) {
 
   return update;
 
-  function click(d) {
+  function onClick(d) {
     if (d.children) {
       d._children = d.children;
       d.children = null;
@@ -67,7 +67,9 @@ function init(elem, data, key) {
       .append("g")
       .attr("class", "node")
       .attr("transform", (d) => `translate(${tempSource.y},${tempSource.x})`)
-      .on("click", click);
+      .on("click", onClick)
+      .on("mouseenter", traceOn)
+      .on("mouseleave", traceOff);
 
     nodeEnter
       .append("circle")
@@ -149,6 +151,29 @@ function init(elem, data, key) {
         })
       )
       .remove();
+
+    function traceOn(d) {
+      traceBack(d);
+      traceForward(d);
+
+      function traceBack(d) {
+        linkUpdate
+          .filter((l) => l.target === d)
+          .classed("trace", true)
+          .each((l) => traceBack(l.source));
+      }
+
+      function traceForward(d) {
+        linkUpdate
+          .filter((l) => l.source === d)
+          .classed("trace", true)
+          .each((l) => traceForward(l.target));
+      }
+    }
+
+    function traceOff(d) {
+      linkUpdate.classed("trace", false);
+    }
   }
 }
 

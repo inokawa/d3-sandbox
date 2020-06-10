@@ -29,6 +29,10 @@ export default {
         stroke-width: 1.5px;
         stroke-opacity: 0.4px;
       }
+
+      .link.trace {
+        stroke: turquoise;
+      }
       </style>`,
         picked: true,
       },
