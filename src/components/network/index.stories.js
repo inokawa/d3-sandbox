@@ -1,7 +1,7 @@
 import { withCssResources } from "@storybook/addon-cssresources";
 import * as d3 from "d3";
 import treeInit from "./tree";
-import networkInit from "./network";
+import networkInit, { radialInit } from "./network";
 
 export default {
   title: "network",
@@ -50,6 +50,13 @@ export const tree = () => {
 export const network = () => {
   const div = document.createElement("div");
   networkInit(div, require("../../resources/miserables.json"));
+
+  return div;
+};
+
+export const radial = () => {
+  const div = document.createElement("div");
+  radialInit(div, require("../../resources/miserables.json"));
 
   return div;
 };
