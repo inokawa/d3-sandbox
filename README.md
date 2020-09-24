@@ -1,6 +1,6 @@
 # d3-sandbox
 
-![deploy](https://github.com/n-inokawa/d3-sandbox/workflows/deploy/badge.svg?branch=master)
+![deploy](https://github.com/inokawa/d3-sandbox/workflows/deploy/badge.svg?branch=master)
 
 D3.js Practice
 
@@ -13,4 +13,4 @@ npm run storybook
 
 ## Demo
 
-https://n-inokawa.github.io/d3-sandbox/
+https://inokawa.github.io/d3-sandbox/
