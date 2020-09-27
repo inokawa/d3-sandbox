@@ -37,7 +37,7 @@ function mapInit(elem, data) {
     .attr("class", "area")
     .call(onMouseEnter, mapGroup)
     .call(onMouseLeave)
-    .on("click", function (d) {
+    .on("click", (event, d) => {
       if (active === d) return reset();
       mapGroup.selectAll(".active").classed("active", false);
       d3.select("#" + d.properties.name).classed("active", (active = d));
@@ -94,7 +94,7 @@ function globeInit(elem, data) {
   enableRotation();
 
   function enableRotation() {
-    d3.timer(function (elapsed) {
+    d3.timer((elapsed) => {
       projection.rotate([
         config.speed * elapsed - 120,
         config.verticalTilt,
@@ -118,8 +118,8 @@ function drawGraticule(area, path) {
 }
 
 function onMouseEnter(selection, area) {
-  selection.on("mouseenter", function (d) {
-    d3.select(this).classed("selected", true);
+  selection.on("mouseenter", (event, d) => {
+    d3.select(event.currentTarget).classed("selected", true);
     area
       .append("text")
       .classed("tooltip", true)
@@ -131,8 +131,8 @@ function onMouseEnter(selection, area) {
 }
 
 function onMouseLeave(selection) {
-  selection.on("mouseleave", function (d) {
-    d3.select(this).classed("selected", false);
+  selection.on("mouseleave", (event, d) => {
+    d3.select(event.currentTarget).classed("selected", false);
     d3.selectAll(".tooltip").remove();
   });
 }

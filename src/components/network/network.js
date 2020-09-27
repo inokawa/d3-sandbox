@@ -101,24 +101,24 @@ function update(svg, simulation, nodes, links) {
     pathEnter.attr("d", diagonal);
   }
 
-  function dragstarted() {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    d3.event.subject.fx = d3.event.subject.x;
-    d3.event.subject.fy = d3.event.subject.y;
+  function dragstarted(event) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    event.subject.fx = event.subject.x;
+    event.subject.fy = event.subject.y;
   }
 
-  function dragged() {
-    d3.event.subject.fx = d3.event.x;
-    d3.event.subject.fy = d3.event.y;
+  function dragged(event) {
+    event.subject.fx = event.x;
+    event.subject.fy = event.y;
   }
 
-  function dragended() {
-    if (!d3.event.active) simulation.alphaTarget(0);
-    d3.event.subject.fx = null;
-    d3.event.subject.fy = null;
+  function dragended(event) {
+    if (!event.active) simulation.alphaTarget(0);
+    event.subject.fx = null;
+    event.subject.fy = null;
   }
 
-  function traceOn(d) {
+  function traceOn(event, d) {
     traceBack(d);
     traceForward(d);
 
@@ -131,7 +131,7 @@ function update(svg, simulation, nodes, links) {
     }
   }
 
-  function traceOff(d) {
+  function traceOff(event, d) {
     pathEnter.classed("trace", false);
   }
 }

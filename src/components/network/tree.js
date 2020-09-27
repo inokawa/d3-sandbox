@@ -30,7 +30,7 @@ function init(elem, data, key) {
 
   return update;
 
-  function onClick(d) {
+  function onClick(event, d) {
     if (d.children) {
       d._children = d.children;
       d.children = null;
@@ -152,7 +152,7 @@ function init(elem, data, key) {
       )
       .remove();
 
-    function traceOn(d) {
+    function traceOn(event, d) {
       traceBack(d);
       traceForward(d);
 
@@ -171,7 +171,7 @@ function init(elem, data, key) {
       }
     }
 
-    function traceOff(d) {
+    function traceOff(event, d) {
       linkUpdate.classed("trace", false);
     }
   }
