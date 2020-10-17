@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
-    "@storybook/addon-cssresources": "6.0.22",
-    "@storybook/html": "6.0.22",
+    "@storybook/addon-cssresources": "6.0.26",
+    "@storybook/html": "6.0.26",
     "babel-loader": "8.1.0",
     "csv-loader": "3.0.3"
   }
