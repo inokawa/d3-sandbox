@@ -13,7 +13,7 @@
     "@babel/core": "7.12.3",
     "@storybook/addon-cssresources": "6.0.26",
     "@storybook/html": "6.0.26",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.1",
     "csv-loader": "3.0.3"
   }
 }
