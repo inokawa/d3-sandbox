@@ -10,10 +10,10 @@
     "d3": "6.7.0"
   },
   "devDependencies": {
-    "@babel/core": "7.13.16",
+    "@babel/core": "7.18.5",
     "@storybook/addon-cssresources": "6.2.7",
     "@storybook/html": "6.2.7",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.2.5",
     "csv-loader": "3.0.3"
   }
 }
