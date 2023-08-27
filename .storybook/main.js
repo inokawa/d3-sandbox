@@ -1,4 +1,7 @@
 module.exports = {
-  stories: ["../src/**/*.stories.js"],
-  addons: ["@storybook/addon-cssresources"],
+  stories: ["../src/**/*.stories.@(js|jsx)"],
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
+  },
 };
