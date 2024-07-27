@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import init from ".";
+import trackCsv from "../../resources/track.csv?raw";
+import { csvParse } from "d3";
 
 const css = `
 path {
@@ -30,9 +32,9 @@ export default {
 export const track = () => {
   const ref = useRef(null);
   useLayoutEffect(() => {
-    let points = require("../../resources/track.csv");
-    points.shift(); // remove header
-    points = points.map((d, i) => [+d[1], +d[0]]);
+    let points = csvParse(trackCsv);
+    points = points.map((d, i) => [+d.longitude, +d.latitude]);
+    console.log(points);
 
     init(ref.current, points);
   }, []);

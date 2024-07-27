@@ -2,6 +2,8 @@ import * as d3 from "d3";
 import treeInit from "./tree";
 import networkInit, { radialInit } from "./network";
 import { useLayoutEffect, useRef } from "react";
+import flare from "../../resources/flare.json";
+import miserables from "../../resources/miserables.json";
 
 const css = `
 .node circle {
@@ -35,7 +37,7 @@ export const tree = () => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
-    treeInit(ref.current, require("../../resources/flare.json"), "name");
+    treeInit(ref.current, structuredClone(flare), "name");
   }, []);
 
   return (
@@ -50,7 +52,7 @@ export const network = () => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
-    networkInit(ref.current, require("../../resources/miserables.json"));
+    networkInit(ref.current, structuredClone(miserables));
   }, []);
 
   return (
@@ -65,7 +67,7 @@ export const radial = () => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
-    radialInit(ref.current, require("../../resources/miserables.json"));
+    radialInit(ref.current, structuredClone(miserables));
   }, []);
 
   return (

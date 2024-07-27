@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { heatmapInit, contourInit } from ".";
+import volcano from "../../resources/volcano.json";
 
 const css = `
 path {
@@ -16,7 +17,7 @@ export const heatmap = () => {
 
   useLayoutEffect(() => {
     // https://en.wikipedia.org/wiki/Maungawhau
-    const data = require("../../resources/volcano.json");
+    const data = structuredClone(volcano);
     const matrix = [];
     data.values.forEach((v, i) => {
       if (i % data.width === 0) {
@@ -39,7 +40,7 @@ export const contour = () => {
   const ref = useRef(null);
   useLayoutEffect(() => {
     // https://en.wikipedia.org/wiki/Maungawhau
-    const data = require("../../resources/volcano.json");
+    const data = structuredClone(volcano);
     const matrix = [];
     data.values.forEach((v, i) => {
       if (i % data.width === 0) {

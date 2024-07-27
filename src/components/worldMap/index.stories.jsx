@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { mapInit, globeInit } from ".";
+import custom from "../../resources/custom.geo.json";
 
 const css = `
 .area {
@@ -21,7 +22,7 @@ export const map = () => {
 
   useLayoutEffect(() => {
     // https://geojson-maps.ash.ms/
-    const json = require("../../resources/custom.geo.json");
+    const json = structuredClone(custom);
     mapInit(ref.current, json.features);
   }, []);
 
@@ -38,7 +39,7 @@ export const globe = () => {
 
   useLayoutEffect(() => {
     // https://geojson-maps.ash.ms/
-    const json = require("../../resources/custom.geo.json");
+    const json = structuredClone(custom);
     globeInit(ref.current, json.features);
   }, []);
 
