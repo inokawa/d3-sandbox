@@ -1,8 +1,4 @@
-import{s as Z,j as R}from"./transform-CEP3XEcg.js";import{r as L}from"./index-CSLRt44l.js";import{m as x}from"./mercator-A7TK5wgp.js";import{i as H}from"./index-C4CnOySM.js";var O={},U={},N=34,m=10,I=13;function B(n){return new Function("d","return {"+n.map(function(r,e){return JSON.stringify(r)+": d["+e+'] || ""'}).join(",")+"}")}function V(n,r){var e=B(n);return function(o,u){return r(e(o),u,n)}}function D(n){var r=Object.create(null),e=[];return n.forEach(function(o){for(var u in o)u in r||e.push(r[u]=u)}),e}function c(n,r){var e=n+"",o=e.length;return o<r?new Array(r-o+1).join(0)+e:e}function W(n){return n<0?"-"+c(-n,6):n>9999?"+"+c(n,6):c(n,4)}function Y(n){var r=n.getUTCHours(),e=n.getUTCMinutes(),o=n.getUTCSeconds(),u=n.getUTCMilliseconds();return isNaN(n)?"Invalid Date":W(n.getUTCFullYear())+"-"+c(n.getUTCMonth()+1,2)+"-"+c(n.getUTCDate(),2)+(u?"T"+c(r,2)+":"+c(e,2)+":"+c(o,2)+"."+c(u,3)+"Z":o?"T"+c(r,2)+":"+c(e,2)+":"+c(o,2)+"Z":e||r?"T"+c(r,2)+":"+c(e,2)+"Z":"")}function J(n){var r=new RegExp('["'+n+`
-\r]`),e=n.charCodeAt(0);function o(t,s){var f,a,i=u(t,function(d,l){if(f)return f(d,l-1);a=d,f=s?V(d,s):B(d)});return i.columns=a||[],i}function u(t,s){var f=[],a=t.length,i=0,d=0,l,y=a<=0,p=!1;t.charCodeAt(a-1)===m&&--a,t.charCodeAt(a-1)===I&&--a;function F(){if(y)return U;if(p)return p=!1,O;var E,w=i,h;if(t.charCodeAt(w)===N){for(;i++<a&&t.charCodeAt(i)!==N||t.charCodeAt(++i)===N;);return(E=i)>=a?y=!0:(h=t.charCodeAt(i++))===m?p=!0:h===I&&(p=!0,t.charCodeAt(i)===m&&++i),t.slice(w+1,E-1).replace(/""/g,'"')}for(;i<a;){if((h=t.charCodeAt(E=i++))===m)p=!0;else if(h===I)p=!0,t.charCodeAt(i)===m&&++i;else if(h!==e)continue;return t.slice(w,E)}return y=!0,t.slice(w,a)}for(;(l=F())!==U;){for(var k=[];l!==O&&l!==U;)k.push(l),l=F();s&&(k=s(k,d++))==null||f.push(k)}return f}function v(t,s){return t.map(function(f){return s.map(function(a){return j(f[a])}).join(n)})}function T(t,s){return s==null&&(s=D(t)),[s.map(j).join(n)].concat(v(t,s)).join(`
-`)}function C(t,s){return s==null&&(s=D(t)),v(t,s).join(`
-`)}function A(t){return t.map(M).join(`
-`)}function M(t){return t.map(j).join(n)}function j(t){return t==null?"":t instanceof Date?Y(t):r.test(t+="")?'"'+t.replace(/"/g,'""')+'"':t}return{parse:o,parseRows:u,format:T,formatBody:C,formatRows:A,formatRow:M,formatValue:j}}var Q=J(","),q=Q.parse;function P(n,r){const e=Math.max(960,window.innerWidth),o=Math.max(500,window.innerHeight),u=Z(n).append("svg").attr("width",e).attr("height",o),v=x().center([-71.01,42.264]).scale((1<<22)/2/Math.PI).translate([e/2,o/2]),T=H().projection(v);u.selectAll(".track").data([{type:"LineString",coordinates:r.filter((C,A)=>A%10==0)}]).enter().append("path").attr("class","track").attr("d",C=>T(C))}const z=`latitude,longitude,elevation,time,,,,
+import{i as e,r as t,t as n}from"./iframe-BnRg5vJj.js";import{I as r,R as i,Z as a,ft as o,n as s,t as c}from"./jsx-runtime-BGnb4_rT.js";function l(e,t){let n=Math.max(960,window.innerWidth),a=Math.max(500,window.innerHeight),s=o(e).append(`svg`).attr(`width`,n).attr(`height`,a),c=r().center([-71.01,42.264]).scale((1<<22)/2/Math.PI).translate([n/2,a/2]),l=i().projection(c);s.selectAll(`.track`).data([{type:`LineString`,coordinates:t.filter((e,t)=>t%10==0)}]).enter().append(`path`).attr(`class`,`track`).attr(`d`,e=>l(e))}var u=t((()=>{s()})),d,f=t((()=>{d=`latitude,longitude,elevation,time,,,,
 42.251078,-71.036984,20.144848,2014-10-18 14:14:57 +0000,5.000000,3.000000,30.585938,2.430000
 42.251098,-71.036973,20.375896,2014-10-18 14:14:58 +0000,5.000000,3.000000,27.070312,1.660000
 42.251123,-71.036961,20.381145,2014-10-18 14:14:59 +0000,5.000000,3.000000,18.984375,2.860000
@@ -3625,7 +3621,7 @@ import{s as Z,j as R}from"./transform-CEP3XEcg.js";import{r as L}from"./index-CS
 42.251078,-71.036892,18.954174,2014-10-18 15:15:32 +0000,5.000000,3.000000,182.812500,4.170000
 42.251056,-71.036899,18.821606,2014-10-18 15:15:33 +0000,5.000000,3.000000,188.789062,2.590000
 42.251040,-71.036910,18.783672,2014-10-18 15:15:34 +0000,5.000000,3.000000,196.875000,2.580000
-`,G=`
+`})),p,m,h,g,_,v;t((()=>{p=e(n()),u(),f(),s(),m=c(),h=`
 path {
   fill: none;
   stroke: steelblue;
@@ -3645,7 +3641,7 @@ path {
   to {
     stroke-dashoffset: 0;
   }
-}`,t0={component:P},g=()=>{const n=L.useRef(null);return L.useLayoutEffect(()=>{let r=q(z);r=r.map((e,o)=>[+e.longitude,+e.latitude]),console.log(r),P(n.current,r)},[]),R.jsxs(R.Fragment,{children:[R.jsx("div",{ref:n}),R.jsx("style",{children:G})]})};g.__docgenInfo={description:"",methods:[],displayName:"track"};var S,_,b;g.parameters={...g.parameters,docs:{...(S=g.parameters)==null?void 0:S.docs,source:{originalSource:`() => {
+}`,g={component:l},_=()=>{let e=(0,p.useRef)(null);return(0,p.useLayoutEffect)(()=>{let t=a(d);t=t.map((e,t)=>[+e.longitude,+e.latitude]),console.log(t),l(e.current,t)},[]),(0,m.jsxs)(m.Fragment,{children:[(0,m.jsx)(`div`,{ref:e}),(0,m.jsx)(`style`,{children:h})]})},_.__docgenInfo={description:``,methods:[],displayName:`track`},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`() => {
   const ref = useRef(null);
   useLayoutEffect(() => {
     let points = csvParse(trackCsv);
@@ -3657,4 +3653,4 @@ path {
       <div ref={ref} />
       <style>{css}</style>
     </>;
-}`,...(b=(_=g.parameters)==null?void 0:_.docs)==null?void 0:b.source}}};const r0=["track"];export{r0 as __namedExportsOrder,t0 as default,g as track};
+}`,..._.parameters?.docs?.source}}},v=[`track`]}))();export{v as __namedExportsOrder,g as default,_ as track};
