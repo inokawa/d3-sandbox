@@ -8,9 +8,6 @@ export default {
     name: "@storybook/react-vite",
     options: {},
   },
-  typescript: {
-    reactDocgen: "react-docgen-typescript",
-  },
   viteFinal: async (config) => {
     return mergeConfig(config, {
       plugins: [react()],
